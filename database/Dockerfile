@@ -1,5 +1,5 @@
 FROM mariadb/server:latest
-MAINTAINER Heitor Gouvêa
+MAINTAINER Nozaki Labs <contact@nozaki.io>
 
 EXPOSE 3306
 
