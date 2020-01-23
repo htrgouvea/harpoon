@@ -1,19 +1,19 @@
-CREATE DATABASE pastebin_crawler;
+CREATE DATABASE nozaki_crawler;
 
-CREATE TABLE `pastebin_crawler`.`company` (
+CREATE TABLE `nozaki_crawler`.`company` (
   `ID_COMPANY` INT NOT NULL AUTO_INCREMENT,
   `NAME` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`ID_COMPANY`),
   UNIQUE INDEX `ID_COMPANY_UNIQUE` (`ID_COMPANY` ASC)) ENGINE = innodb;
 
-CREATE TABLE `pastebin_crawler`.`pastebin_history` (
+CREATE TABLE `nozaki_crawler`.`nozaki_history` (
   `ID_PASTE` INT NOT NULL AUTO_INCREMENT,
   `REF` VARCHAR(45) NOT NULL,
   `DATETIME` DATETIME NOT NULL DEFAULT NOW(),
   PRIMARY KEY (`ID_PASTE`),
   UNIQUE INDEX `ID_PASTE_UNIQUE` (`ID_PASTE` ASC)) ENGINE = innodb;
 
-CREATE TABLE `pastebin_crawler`.`pastebin_rule` (
+CREATE TABLE `nozaki_crawler`.`nozaki_rule` (
   `ID_RULE` INT NOT NULL AUTO_INCREMENT,
   `ID_COMPANY` INT NOT NULL,
   `WORD` TEXT NOT NULL,
@@ -23,25 +23,25 @@ CREATE TABLE `pastebin_crawler`.`pastebin_rule` (
   INDEX `ID_COMPANY_idx` (`ID_COMPANY` ASC),
   CONSTRAINT `FKCOMPANY`
     FOREIGN KEY (`ID_COMPANY`)
-    REFERENCES `pastebin_crawler`.`company` (`ID_COMPANY`)
+    REFERENCES `nozaki_crawler`.`company` (`ID_COMPANY`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION) ENGINE = innodb;
 
 
-CREATE TABLE `pastebin_crawler`.`pastebin_alert` (
-  `ID_PASTEBIN_ALERT` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE `nozaki_crawler`.`nozaki_alert` (
+  `ID_nozaki_ALERT` INT NOT NULL AUTO_INCREMENT,
   `ID_COMPANY` INT NOT NULL,
   `CONTENT` LONGTEXT NOT NULL,
   `DATETIME` DATETIME NOT NULL DEFAULT NOW(),
   `STATUS` INT(1) NOT NULL,
   `NOTIFICATION` INT(1) NOT NULL,
   `REF` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`ID_PASTEBIN_ALERT`),
-  UNIQUE INDEX `ID_PASTEBIN_ALERT_UNIQUE` (`ID_PASTEBIN_ALERT` ASC),
+  PRIMARY KEY (`ID_nozaki_ALERT`),
+  UNIQUE INDEX `ID_nozaki_ALERT_UNIQUE` (`ID_nozaki_ALERT` ASC),
   UNIQUE INDEX `REF` (`REF` ASC),
   INDEX `ID_COMPANY_idx` (`ID_COMPANY` ASC),
   CONSTRAINT `FK_COMPANY`
     FOREIGN KEY (`ID_COMPANY`)
-    REFERENCES `pastebin_crawler`.`company` (`ID_COMPANY`)
+    REFERENCES `nozaki_crawler`.`company` (`ID_COMPANY`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION) ENGINE = innodb;
