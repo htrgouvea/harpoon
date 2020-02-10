@@ -1,7 +1,7 @@
-#!/usr/bin/env perl
-
 package Scraper::Agent;
 
+use strict;
+use warnings;
 use JSON;
 use LWP::UserAgent;
 
@@ -16,14 +16,16 @@ sub new {
     my @rules = split(' / ', $filters);
 
     if ($httpCode == "200") {
-        my $data = uc $request -> content();        
-        
+        my $data = uc $request -> content(); 
+
+        $word = uc $word;
+
         if (($data =~ m/$word/) && (map { $data =~ /$_/i } @rules)) {
             return $data;
         }
     }
 
-    return false;
+    return "false";
 }
 
 1;
