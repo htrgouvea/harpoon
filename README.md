@@ -35,10 +35,12 @@
   # Starting MariaDB container
   $ docker run -d -p 3306:3306 --name maria -e MARIADB_ROOT_PASSWORD=mypassword uranus-database
 
-  # Building Pastebin Crawler container
+  # Building all crawlers containers
   $ docker build --rm --squash -t uranus-pastebin-crawler ./crawlers/pastebin/
+  $ docker build --rm --squash -t uranus-bing-crawler ./crawlers/bing/
 
-  # 
+  # Running all crawlers
+  $
 ```
 
 
