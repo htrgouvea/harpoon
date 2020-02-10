@@ -24,9 +24,9 @@ sub main {
                 ['REF'], where => {REF => $key}
             ) -> fetch -> [0]} || 1;
 
-            if ($query eq "1") {      
-                print "[+] -> $key\n";
+            # print "[+] -> $key\n";
 
+            if ($query eq "1") {
                 foreach my $value (keys @rules) {
                     my $agent = Scraper::Agent -> new (
                         $key,

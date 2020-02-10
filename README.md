@@ -1,6 +1,8 @@
 <p align="center">
   <h1 align="center">Uranus</h1>
-  <p align="center">An ecosystem of crawlers for detecting: data leaks, undue file exposure and attempts to exfiltrate company data</p>
+  <p align="center">
+    An ecosystem of crawlers for detecting: leaks, sensitive data exposure and attempts exfiltration of data
+  </p>
 
   <p align="center">
     <a href="https://github.com/NozakiLabs/uranus/blob/master/LICENSE.md">
@@ -34,7 +36,9 @@
   $ docker run -d -p 3306:3306 --name maria -e MARIADB_ROOT_PASSWORD=mypassword uranus-database
 
   # Building Pastebin Crawler container
-  $
+  $ docker build --rm --squash -t uranus-pastebin-crawler ./crawlers/pastebin/
+
+  # 
 ```
 
 

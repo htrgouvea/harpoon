@@ -9,6 +9,7 @@ RUN apt -qy update \
     && apt -qy upgrade \
     && apt install -qy curl \
                     make \
+                    gcc \
                     perl \
                     libwww-perl \
                     libdbd-mysql-perl \
@@ -16,5 +17,5 @@ RUN apt -qy update \
   	&& apt -y autoremove
 
 RUN cpan install Config::Simple JSON LWP::UserAgent DBIx::Custom
-     
-CMD perl app.pl
+
+# perl app.pl
