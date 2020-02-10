@@ -1,7 +1,7 @@
-#!/usr/bin/env perl
-
 package Entities::Rules;
 
+use strict;
+use warnings;
 use Entities::Connector;
 
 sub new {

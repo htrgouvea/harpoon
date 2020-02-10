@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-use 5.010;
+use 5.018;
 use strict;
 use warnings;
 use lib "./lib/";
@@ -20,14 +20,13 @@ sub main {
         my @collector = Scraper::Collector -> new();
 
         foreach my $key (@collector) {
-
             my $query = eval {$dbi -> model('pastebin_history') -> select(
                 ['REF'], where => {REF => $key}
             ) -> fetch -> [0]} || 1;
-            
-            print "[+] -> $key\n";
 
-            if ($query eq "1") {
+            if ($query eq "1") {      
+                print "[+] -> $key\n";
+
                 foreach my $value (keys @rules) {
                     my $agent = Scraper::Agent -> new (
                         $key,

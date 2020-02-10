@@ -28,8 +28,12 @@
 
   # Building MariaDB Database
   $ docker build --rm --squash -t pastebin-database ./database/
+
   # Starting MariaDB container
-  $ docker run -d -p 3306:3306 --name maria -e MARIADB_ROOT_PASSWORD=<mypassword> pastebin-database
+  $ docker run -d -p 3306:3306 --name maria -e MARIADB_ROOT_PASSWORD=mypassword pastebin-database
+
+  # Building Pastebin Crawler container
+  # $ docker build --rm --squash -t pastebin-crawler .
 
   # Install dependencies libs 
   $ sudo cpan install Config::Simple JSON LWP::UserAgent DBIx::Custom

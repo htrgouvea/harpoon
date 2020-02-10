@@ -1,7 +1,7 @@
-#!/usr/bin/env perl
-
 package Entities::Connector;
 
+use strict;
+use warnings;
 use DBIx::Custom;
 use Config::Simple;
 

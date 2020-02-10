@@ -1,7 +1,7 @@
-#!/usr/bin/env perl
-
 package Scraper::Collector;
 
+use strict;
+use warnings;
 use JSON;
 use LWP::UserAgent;
 
