@@ -40,9 +40,8 @@
   $ docker build --rm --squash -t uranus-bing-crawler ./crawlers/bing/
 
   # Running all crawlers
-  $
+  $ 
 ```
-
 
 ### Contribution
 
