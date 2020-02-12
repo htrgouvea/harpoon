@@ -28,6 +28,8 @@
   exposed sensitive files and data exfiltration attempts.
 ```
 
+![Image](https://i.imgur.com/VRXVgt3.png)
+
 ### Download and setup:
 
 ```bash
