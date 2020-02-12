@@ -20,6 +20,9 @@
 ### How it works
 
 ```
+  This project is summarized in several crawlers that constitute a single ecosystem, that monitor certain
+  channels such as: Github, Bing, Pastebin and iHaveBeenPwned? in order to perform data leak detection,
+  exposed sensitive files and data exfiltration attempts.
 ```
 
 ### Download and setup:
