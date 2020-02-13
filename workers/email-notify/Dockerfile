@@ -16,6 +16,6 @@ RUN apt -qy update \
     && apt clean \
   	&& apt -y autoremove
 
-RUN cpan install Config::Simple JSON LWP::UserAgent DBIx::Custom
+RUN cpan install Config::Simple JSON LWP::UserAgent DBIx::Custom Email::MIME Email::Sender::Simple
 
 # perl app.pl
