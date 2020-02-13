@@ -8,21 +8,18 @@ use Email::MIME;
 use Email::Sender::Simple qw(sendmail);
 
 sub new {
-    my ($self, $id, $ref, $content, $date) = @_;
-    my $transport = Worker::Transport -> new();
+    my ($self, $id, $idCompany, $ref, $content, $date, $recipient) = @_;
 
-    my $sender        = "Heitor Gouvêa <hi\@heitorgouvea.me";
-    my $recipient     = "hi\@heitorgouvea.me";
-    my $subject       = "Uranus Report Boletim - Confidential";
+    my $transport = Worker::Transport -> new();
 
     my $htmlbody = "
         <html>
             <body>
-                <h1>Uranus Report Boletim</h1>
+                <h1>Report Boletim</h1>
                 <h3>
                     <p>
                         <br>
-                        Our automated monitoring systems have detected a possible incident:<br>
+                        Uranus automated monitoring systems have detected a possible incident:<br>
                         <br>
                         <br>
                         ID: $id<br>
@@ -44,9 +41,9 @@ sub new {
             charset      => 'UTF-8',
         },
         header_str  => [
-            From    => $sender,
+            From    => "Heitor Gouvêa <hi\@heitorgouvea.me",
             To      => $recipient,
-            Subject => $subject,
+            Subject => "Report Boletim by Uranus",
         ],
         parts => [
             Email::MIME -> create (    
@@ -57,7 +54,11 @@ sub new {
     );
 
     try {
-        sendmail($message, { transport => $transport });
+        sendmail(
+            $message, { 
+                transport => $transport
+            }
+        );
     }
     
     catch {

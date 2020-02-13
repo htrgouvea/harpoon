@@ -12,15 +12,17 @@ sub main {
     my $dbi  = Entities::Connector -> DBI();
 
     if ($dbi) {
+        my $to = "hi\@heitorgouvea.me";
         my @alerts = Entities::Alerts -> new();
 
         foreach my $alert (@alerts) {
-            my $dispatch = Worker::Dispatch -> new (
+            my $worker = Worker::Dispatch -> new (
                 $alert -> {id},
                 $alert -> {idCompany},
                 $alert -> {ref},
                 $alert -> {content},
-                $alert -> {date}
+                $alert -> {date},
+                $to
             );
         }
     }
