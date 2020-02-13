@@ -1,5 +1,8 @@
 <p align="center">
+  <img src="https://i.imgur.com/oQttGq1.jpg" height="200px" width"200px">
+  <p align="center">if i reach out my hands, they touch your privacy</p>
   <h1 align="center">Uranus</h1>
+  
   <p align="center">
     An ecosystem of crawlers for detecting: leaks, sensitive data exposure and attempts exfiltration of data
   </p>
@@ -20,7 +23,12 @@
 ### How it works
 
 ```
+  This project is summarized in several crawlers that constitute a single ecosystem, that monitor certain
+  channels such as: Github, Bing, Pastebin and iHaveBeenPwned? in order to perform data leak detection,
+  exposed sensitive files and data exfiltration attempts.
 ```
+
+![Image](https://i.imgur.com/VRXVgt3.png)
 
 ### Download and setup:
 
