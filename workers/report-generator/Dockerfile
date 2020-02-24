@@ -1,8 +1,8 @@
 FROM debian:latest
 MAINTAINER Nozaki Labs <contact@nozaki.io>
 
-COPY . /usr/src/pastebin
-WORKDIR /usr/src/pastebin
+COPY . /usr/src/report-generator
+WORKDIR /usr/src/report-generator
 
 RUN apt -qy update \
     && apt list --upgradable \
@@ -11,16 +11,11 @@ RUN apt -qy update \
                     make \
                     gcc \
                     perl \
-                    cron \
                     libwww-perl \
                     libdbd-mysql-perl \
     && apt clean \
   	&& apt -y autoremove
 
-RUN cpan install Config::Simple JSON LWP::UserAgent DBIx::Custom
-CMD 
+RUN cpan install Config::Simple JSON LWP::UserAgent DBIx::Custom Email::MIME Email::Sender::Simple
 
 # perl app.pl
-
-(crontab -l 2>/dev/null; echo "* * * * * perl /usr/src/pastebin/app.pl") | crontab -
-(crontab -l ; echo "* * * * * perl /usr/src/pastebin/app.pl >> /var/log/pastebin.log") | crontab
