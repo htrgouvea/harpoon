@@ -1,5 +1,5 @@
 FROM debian:latest
-MAINTAINER Nozaki Labs <contact@nozaki.io>
+MAINTAINER Heitor Gouvêa <hi@heitorgouvea.me>
 
 COPY . /usr/src/report-generator
 WORKDIR /usr/src/report-generator
