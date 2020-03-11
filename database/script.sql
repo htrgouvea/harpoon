@@ -1,6 +1,6 @@
-CREATE DATABASE nozaki_monitor;
+CREATE DATABASE uranus_monitor;
 
-CREATE TABLE `nozaki_monitor`.`company` (
+CREATE TABLE `uranus_monitor`.`company` (
   `ID_COMPANY` INT NOT NULL AUTO_INCREMENT,
   `NAME` VARCHAR(45) NOT NULL,
   `EMAIL` VARCHAR(100) NOT NULL,
@@ -9,14 +9,14 @@ CREATE TABLE `nozaki_monitor`.`company` (
   PRIMARY KEY (`ID_COMPANY`),
   UNIQUE INDEX `ID_COMPANY_UNIQUE` (`ID_COMPANY` ASC)) ENGINE = innodb;
 
-CREATE TABLE `nozaki_monitor`.`pastebin_history` (
+CREATE TABLE `uranus_monitor`.`pastebin_history` (
   `ID_PASTE` INT NOT NULL AUTO_INCREMENT,
   `REF` CHAR(8) NOT NULL,
   `DATETIME` DATETIME NOT NULL DEFAULT NOW(),
   PRIMARY KEY (`ID_PASTE`),
   UNIQUE INDEX `ID_PASTE_UNIQUE` (`ID_PASTE` ASC)) ENGINE = innodb;
 
-CREATE TABLE `nozaki_monitor`.`pastebin_rule` (
+CREATE TABLE `uranus_monitor`.`pastebin_rule` (
   `ID_RULE` INT NOT NULL AUTO_INCREMENT,
   `ID_COMPANY` INT NOT NULL,
   `WORD` TEXT NOT NULL,
@@ -26,11 +26,11 @@ CREATE TABLE `nozaki_monitor`.`pastebin_rule` (
   INDEX `ID_COMPANY_idx` (`ID_COMPANY` ASC),
   CONSTRAINT `FKCOMPANY`
     FOREIGN KEY (`ID_COMPANY`)
-    REFERENCES `nozaki_monitor`.`company` (`ID_COMPANY`)
+    REFERENCES `uranus_monitor`.`company` (`ID_COMPANY`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION) ENGINE = innodb;
 
-CREATE TABLE `nozaki_monitor`.`pastebin_alert` (
+CREATE TABLE `uranus_monitor`.`pastebin_alert` (
   `ID_PASTEBIN_ALERT` INT NOT NULL AUTO_INCREMENT,
   `ID_COMPANY` INT NOT NULL,
   `CONTENT` LONGTEXT NOT NULL,
@@ -44,11 +44,11 @@ CREATE TABLE `nozaki_monitor`.`pastebin_alert` (
   INDEX `ID_COMPANY_idx` (`ID_COMPANY` ASC),
   CONSTRAINT `FK_COMPANY`
     FOREIGN KEY (`ID_COMPANY`)
-    REFERENCES `nozaki_monitor`.`company` (`ID_COMPANY`)
+    REFERENCES `uranus_monitor`.`company` (`ID_COMPANY`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION) ENGINE = innodb;
    
-CREATE TABLE `nozaki_monitor`.`bing_rule` (
+CREATE TABLE `uranus_monitor`.`bing_rule` (
   `ID_BING_RULE` INT NOT NULL AUTO_INCREMENT,
   `ID_COMPANY` INT NOT NULL,
   `DOMAIN` TEXT(124) NOT NULL,
@@ -57,11 +57,11 @@ CREATE TABLE `nozaki_monitor`.`bing_rule` (
   INDEX `ID_COMPANY_idx` (`ID_COMPANY` ASC),
   CONSTRAINT `FK_ID_COMPANY`
     FOREIGN KEY (`ID_COMPANY`)
-    REFERENCES `nozaki_monitor`.`company` (`ID_COMPANY`)
+    REFERENCES `uranus_monitor`.`company` (`ID_COMPANY`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION) ENGINE = innodb;
 
-CREATE TABLE `nozaki_monitor`.`bing_alert` (
+CREATE TABLE `uranus_monitor`.`bing_alert` (
   `ID_BING_ALERT` INT NOT NULL AUTO_INCREMENT,
   `ID_COMPANY` INT NOT NULL,
   `URL` TEXT NOT NULL,
@@ -75,6 +75,6 @@ CREATE TABLE `nozaki_monitor`.`bing_alert` (
   INDEX `ID_COMPANY_idx` (`ID_COMPANY` ASC),
   CONSTRAINT `ID_FK_COMPANY`
     FOREIGN KEY (`ID_COMPANY`)
-    REFERENCES `nozaki_monitor`.`company` (`ID_COMPANY`)
+    REFERENCES `uranus_monitor`.`company` (`ID_COMPANY`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION) ENGINE = innodb;

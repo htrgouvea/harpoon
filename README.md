@@ -8,10 +8,10 @@
   </p>
 
   <p align="center">
-    <a href="https://github.com/NozakiLabs/uranus/blob/master/LICENSE.md">
+    <a href="https://github.com/GouveaHeitor/uranus/blob/master/LICENSE.md">
       <img src="https://img.shields.io/badge/license-MIT-blue.svg">
     </a>
-    <a href="https://github.com/NozakiLabs/uranus/releases">
+    <a href="https://github.com/GouveaHeitor/uranus/releases">
       <img src="https://img.shields.io/badge/version-0.9-blue.svg">
     </a>
   </p>
@@ -34,7 +34,7 @@
 
 ```bash
   # Download
-  $ git clone https://github.com/NozakiLabs/uranus
+  $ git clone https://github.com/GouveaHeitor/uranus
   $ cd uranus
 
   # Building MariaDB Database
@@ -53,8 +53,8 @@
 
 ### Contribution
 
-- Your contributions and suggestions are heartily ♥ welcome. [**See here the contribution guidelines.**](/.github/CONTRIBUTING.md) Please, report bugs via [**issues page.**](https://github.com/NozakiLabs/uranus/issues) See here the [**security policy.**](./github/SECURITY.md) (✿ ◕‿◕) 
+- Your contributions and suggestions are heartily ♥ welcome. [**See here the contribution guidelines.**](/.github/CONTRIBUTING.md) Please, report bugs via [**issues page.**](https://github.com/GouveaHeitor/uranus/issues) See here the [**security policy.**](./github/SECURITY.md) (✿ ◕‿◕) 
 
 ### License
 
-- This work is licensed under [**MIT License.**](https://github.com/NozakiLabs/uranus/blob/master/LICENSE.md)
+- This work is licensed under [**MIT License.**](https://github.com/GouveaHeitor/uranus/blob/master/LICENSE.md)

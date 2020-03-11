@@ -1,5 +1,5 @@
 FROM debian:latest
-MAINTAINER Nozaki Labs <contact@nozaki.io>
+MAINTAINER Heitor Gouvêa <hi@heitorgouvea.me>
 
 COPY . /usr/src/pastebin
 WORKDIR /usr/src/pastebin
@@ -22,5 +22,5 @@ CMD
 
 # perl app.pl
 
-(crontab -l 2>/dev/null; echo "* * * * * perl /usr/src/pastebin/app.pl") | crontab -
-(crontab -l ; echo "* * * * * perl /usr/src/pastebin/app.pl >> /var/log/pastebin.log") | crontab
+# (crontab -l 2>/dev/null; echo "* * * * * perl /usr/src/pastebin/app.pl") | crontab -
+# (crontab -l ; echo "* * * * * perl /usr/src/pastebin/app.pl >> /var/log/pastebin.log") | crontab
