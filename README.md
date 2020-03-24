@@ -1,6 +1,6 @@
 <p align="center">
   <img src="https://i.imgur.com/oQttGq1.jpg" height="200px" width"200px">
-  <p align="center">if i reach out my hands, they touch your privacy</p>
+  <p align="center">"if i reach out my hands, they touch your privacy"</p>
   <h1 align="center">Uranus</h1>
   
   <p align="center">
