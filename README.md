@@ -12,7 +12,7 @@
       <img src="https://img.shields.io/badge/license-MIT-blue.svg">
     </a>
     <a href="https://github.com/GouveaHeitor/uranus/releases">
-      <img src="https://img.shields.io/badge/version-0.9-blue.svg">
+      <img src="https://img.shields.io/badge/version-0.1.1-blue.svg">
     </a>
   </p>
 </p>
@@ -53,8 +53,8 @@
 
 ### Contribution
 
-- Your contributions and suggestions are heartily ♥ welcome. [**See here the contribution guidelines.**](/.github/CONTRIBUTING.md) Please, report bugs via [**issues page.**](https://github.com/GouveaHeitor/uranus/issues) See here the [**security policy.**](./github/SECURITY.md) (✿ ◕‿◕) 
+- Your contributions and suggestions are heartily ♥ welcome. [See here the contribution guidelines.](/.github/CONTRIBUTING.md) Please, report bugs via [issues page.](https://github.com/GouveaHeitor/uranus/issues) See here the [security policy.](./github/SECURITY.md) (✿ ◕‿◕) 
 
 ### License
 
-- This work is licensed under [**MIT License.**](https://github.com/GouveaHeitor/uranus/blob/master/LICENSE.md)
+- This work is licensed under [MIT License.](https://github.com/GouveaHeitor/uranus/blob/master/LICENSE.md)
