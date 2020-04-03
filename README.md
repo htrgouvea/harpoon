@@ -46,9 +46,14 @@
   # Building all crawlers containers
   $ docker build --rm --squash -t uranus-pastebin-crawler ./crawlers/pastebin/
   $ docker build --rm --squash -t uranus-bing-crawler ./crawlers/bing/
+  $ docker build --rm --squast -t uranus-github-crawler ./crawlers/github/
+  $ docker build --rm --squash -t uranus-ihavebeenpwned-crawler ./crawlers/ihavebeenpwned
 
   # Running all crawlers
-  $ 
+  $ docker run 
+  $ docker run
+  $ docker run
+  $ docker run
 ```
 
 ### Contribution
