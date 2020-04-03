@@ -2,11 +2,9 @@
   <img src="https://i.imgur.com/oQttGq1.jpg" height="200px" width"200px">
   <p align="center">"if i reach out my hands, they touch your privacy"</p>
   <h1 align="center">Uranus</h1>
-  
   <p align="center">
     An ecosystem of crawlers for detecting: leaks, sensitive data exposure and attempts exfiltration of data
   </p>
-
   <p align="center">
     <a href="https://github.com/GouveaHeitor/uranus/blob/master/LICENSE.md">
       <img src="https://img.shields.io/badge/license-MIT-blue.svg">
