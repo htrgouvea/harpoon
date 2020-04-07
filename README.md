@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.imgur.com/oQttGq1.jpg" height="200px" width"200px">
+  <img src="https://i.imgur.com/oQttGq1.jpg" height="150px" width="150px">
   <p align="center">"if i reach out my hands, they touch your privacy"</p>
   <h1 align="center">Uranus</h1>
   <p align="center">
@@ -56,7 +56,7 @@
 
 ### Contribution
 
-- Your contributions and suggestions are heartily ♥ welcome. [See here the contribution guidelines.](/.github/CONTRIBUTING.md) Please, report bugs via [issues page.](https://github.com/GouveaHeitor/uranus/issues) See here the [security policy.](./github/SECURITY.md) (✿ ◕‿◕) This project follows the best practices defined by this [style guide](https://github.com/GouveaHeitor/perl-style-guide).
+- Your contributions and suggestions are heartily ♥ welcome. [See here the contribution guidelines.](/.github/CONTRIBUTING.md) Please, report bugs via [issues page.](https://github.com/GouveaHeitor/uranus/issues) See here the [security policy.](./github/SECURITY.md) (✿ ◕‿◕) This project follows the best practices defined by this [style guide](https://heitorgouvea.me/projects/perl-style-guide).
 
 ### License
 
