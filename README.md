@@ -26,7 +26,7 @@
   exposed sensitive files and data exfiltration attempts.
 ```
 
-![Image](https://i.imgur.com/VRXVgt3.png)
+![Image](https://heitorgouvea.me/images/projects/uranus/architecture.png)
 
 ### Download and setup:
 
