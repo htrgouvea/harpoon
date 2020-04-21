@@ -54,6 +54,14 @@
   $ docker run
 ```
 
+### To do
+
+- Refact the database
+- Improve Bing and Pastebin crawlers
+- Create crawler for Github and iHaveBeenPwned
+- Create worker for send notifications via E-mail, Telegram and Slack
+- Create a API REST for disponibilize a channel for future integrations
+
 ### Contribution
 
 - Your contributions and suggestions are heartily ♥ welcome. [See here the contribution guidelines.](/.github/CONTRIBUTING.md) Please, report bugs via [issues page.](https://github.com/GouveaHeitor/uranus/issues) See here the [security policy.](/SECURITY.md) (✿ ◕‿◕) This project follows the best practices defined by this [style guide](https://heitorgouvea.me/projects/perl-style-guide).
