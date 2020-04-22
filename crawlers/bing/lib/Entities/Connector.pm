@@ -6,7 +6,7 @@ use DBIx::Custom;
 use Config::Simple;
 
 sub new {
-    my $config   = Config::Simple -> new('/usr/src/bing/env/database.conf');
+    my $config   = Config::Simple -> new('./env/database.conf');
 
     my $hostname = $config -> param('db_hostname');
     my $username = $config -> param('db_username');
