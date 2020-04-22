@@ -32,27 +32,33 @@
 
 ```bash
   # Download
-  $ git clone https://github.com/GouveaHeitor/uranus
-  $ cd uranus
+  $ git clone https://github.com/GouveaHeitor/uranus && cd uranus
 
-  # Building MariaDB Database
+  # Building and starting MariaDB Database
   $ docker build --rm --squash -t uranus-database ./database/
-
-  # Starting MariaDB container
-  $ docker run -d -p 3306:3306 --name maria -e MARIADB_ROOT_PASSWORD=mypassword uranus-database
+  $ docker run -d -p 3306:3306 --name database -e MARIADB_ROOT_PASSWORD=mypassword uranus-database
 
   # Building all crawlers containers
-  $ docker build --rm --squash -t uranus-pastebin-crawler ./crawlers/pastebin/
-  $ docker build --rm --squash -t uranus-bing-crawler ./crawlers/bing/
-  $ docker build --rm --squast -t uranus-github-crawler ./crawlers/github/
-  $ docker build --rm --squash -t uranus-ihavebeenpwned-crawler ./crawlers/ihavebeenpwned
+  $ docker build --rm --squash -t pastebin-crawler ./crawlers/pastebin/
+  $ docker build --rm --squash -t bing-crawler ./crawlers/bing/
 
   # Running all crawlers
-  $ docker run 
-  $ docker run
-  $ docker run
-  $ docker run
+  $ docker run -d --name pastebin -e MARIADB_ROOT_PASSWORD=<yourpassword> pastebin-crawler
+  $ docker run -d --name bing -e MARIADB_ROOT_PASSWORD=<yourpassword> bing-crawler
+
+  # Building all workers containers
+  $ docker build --rm --squash -t e-mail-notify ./workers/e-mail-notify
+
+  # Running all workers
+  $ docker run -d --name e-mail-notify -e MARIADB_ROOT_PASSWORD=<yourpassword> e-mail-notify
 ```
+
+
+### Basic filters
+
+  - Pastebin: HACK / HACKED / OWNED / PAWNED / PWNED / HACKIADO / HACKIADA / HACKEADO / VAZAMENTO / VAZADO / VAZADA / LEAK / LEAKED / INVASAO / INVADIDA / INVADIDO / DEFACE / DEFACEMENT / H4CK / H4CK3D / OWN3D / PWN3D / P3WN3D / H4CK14D0 / H4CK14D4 / V4Z4M3NT0 / V4Z4D0 / L34K / L34K3D / INV4S40 / INV4D1D4 / INV4D1D0 / D3F4C3 / D3F4C3M3NT
+
+  - Bing: 
 
 ### Contribution
 

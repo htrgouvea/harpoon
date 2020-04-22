@@ -8,19 +8,16 @@ RUN apt -qy update \
     && apt list --upgradable \
     && apt -qy upgrade \
     && apt install -qy curl \
-                    make \
-                    gcc \
-                    perl \
-                    cron \
-                    libwww-perl \
-                    libdbd-mysql-perl \
+                      make \
+                      gcc \
+                      perl \
+                      cron \
+                      libwww-perl \
+                      libdbd-mysql-perl \
     && apt clean \
   	&& apt -y autoremove
 
 RUN cpan install Config::Simple JSON LWP::UserAgent DBIx::Custom
-CMD 
 
-# perl app.pl
-
-# (crontab -l 2>/dev/null; echo "* * * * * perl /usr/src/pastebin/app.pl") | crontab -
-# (crontab -l ; echo "* * * * * perl /usr/src/pastebin/app.pl >> /var/log/pastebin.log") | crontab
+# RUN (crontab -l 2>/dev/null; echo "* * * * * perl /usr/src/pastebin/app.pl") | crontab -
+# RUN (crontab -l ; echo "* * * * * perl /usr/src/pastebin/app.pl >> /var/log/pastebin.log") | crontab

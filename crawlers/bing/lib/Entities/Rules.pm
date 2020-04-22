@@ -7,16 +7,23 @@ use Entities::Connector;
 sub new {
     my $dbi = Entities::Connector -> new();
 
-    $dbi -> create_model('bing_rule');
+    $dbi -> create_model('rule');
 
-    my $rules = $dbi -> model('bing_rule') -> select(['ID_BING_RULE', 'ID_COMPANY', 'DOMAIN']);
+    my $rules = $dbi -> model('rule') -> select(
+        ['ID_RULE', 'ID_COMPANY', 'STRING', 'FILTER'],
+        where => {
+            SOURCE => "BING"
+        }
+    );
+
     my @data;
 
     while (my $rule = $rules -> fetch_hash) {
         push @data, {
             id => $rule -> {ID_BING_RULE},
-            idCompany => $rule -> {ID_COMPANY},
-            domain => $rule -> {DOMAIN}
+            company => $rule -> {ID_COMPANY},
+            string => $rule -> {STRING},
+            filter => $rule -> {FILTER}
         };
     }
 
