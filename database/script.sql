@@ -1,6 +1,6 @@
-CREATE DATABASE `uranus_monitor`;
+CREATE DATABASE `uranus`;
 
-CREATE TABLE `uranus_monitor`.`company` (
+CREATE TABLE `uranus`.`company` (
   `ID_COMPANY` int(11) NOT NULL AUTO_INCREMENT,
   `NAME` varchar(45) NOT NULL,
   `EMAIL` varchar(100) NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE `uranus_monitor`.`company` (
   UNIQUE KEY `ID_COMPANY_UNIQUE` (`ID_COMPANY`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3;
 
-CREATE TABLE `uranus_monitor`.`history` (
+CREATE TABLE `uranus`.`history` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `REFERENCE` char(8) NOT NULL,
   `DATETIME` datetime NOT NULL DEFAULT current_timestamp(),
@@ -19,7 +19,7 @@ CREATE TABLE `uranus_monitor`.`history` (
   UNIQUE KEY `ID_PASTE_UNIQUE` (`ID`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `uranus_monitor`.`rule` (
+CREATE TABLE `uranus`.`rule` (
   `ID_RULE` int(11) NOT NULL AUTO_INCREMENT,
   `ID_COMPANY` int(11) NOT NULL,
   `STRING` tinytext NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE `uranus_monitor`.`rule` (
   CONSTRAINT `FK_ID_COMPANY` FOREIGN KEY (`ID_COMPANY`) REFERENCES `company` (`ID_COMPANY`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=3;
 
-CREATE TABLE `uranus_monitor`.`alert` (
+CREATE TABLE `uranus`.`alert` (
   `ID_ALERT` int(11) NOT NULL AUTO_INCREMENT,
   `ID_COMPANY` int(11) NOT NULL,
   `CONTENT` text NOT NULL,
