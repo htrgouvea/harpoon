@@ -6,19 +6,19 @@ use Config::Simple;
 use Email::Sender::Transport::SMTP;
 
 sub new {
-    my $config = Config::Simple -> new('/home/Projects/uranus/workers/email-notify/env/smtp.conf');
+    my $config = Config::Simple -> new("./env/smtp.conf");
 
-    my $hostname = $config -> param('smtp_hostname');
-    my $port     = $config -> param('smtp_port');
-    my $username = $config -> param('smtp_username');
-    my $password = $config -> param('smtp_password');
+    my $hostname = $config -> param("smtp_hostname");
+    my $port     = $config -> param("smtp_port");
+    my $username = $config -> param("smtp_username");
+    my $password = $config -> param("smtp_password");
 
     my $transport = Email::Sender::Transport::SMTP -> new(
         host          => $hostname,
         port          => $port,
-        ssl           => 'starttls',
+        ssl           => "starttls",
         sasl_username => $username,
-        sasl_password => $password,
+        sasl_password => $password
     );
     
     return $transport;

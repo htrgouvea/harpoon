@@ -39,8 +39,8 @@ sub main {
                         my $query = $dbi -> model('pastebin_alert') -> insert ({
                             ID_COMPANY => $rules[$value] -> {idCompany},
                             CONTENT => $agent,
-                            STATUS => "0",
-                            NOTIFICATION => "0",
+                            STATUS => 0,
+                            NOTIFICATION => 0,
                             REF => $key
                         });
                     }
