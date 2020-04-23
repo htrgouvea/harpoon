@@ -3,7 +3,6 @@ package Worker::Dispatch;
 use strict;
 use warnings;
 use Try::Tiny;
-use Mojo::File;
 use Email::MIME;
 use Worker::Transport;
 use Email::Sender::Simple qw(sendmail);

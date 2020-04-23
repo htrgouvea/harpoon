@@ -38,19 +38,15 @@
   $ docker build --rm --squash -t uranus-database ./database/
   $ docker run -d -p 3306:3306 --name database -e MARIADB_ROOT_PASSWORD=mypassword uranus-database
 
-  # Building all crawlers containers
+  # Building all crawlers and workers containers
   $ docker build --rm --squash -t pastebin-crawler ./crawlers/pastebin/
   $ docker build --rm --squash -t bing-crawler ./crawlers/bing/
+  $ docker build --rm --squash -t email-notify ./workers/email-notify
 
   # Running all crawlers
-  $ docker run -d --name pastebin -e MARIADB_ROOT_PASSWORD=<yourpassword> pastebin-crawler
-  $ docker run -d --name bing -e MARIADB_ROOT_PASSWORD=<yourpassword> bing-crawler
-
-  # Building all workers containers
-  $ docker build --rm --squash -t e-mail-notify ./workers/e-mail-notify
-
-  # Running all workers
-  $ docker run -d --name e-mail-notify -e MARIADB_ROOT_PASSWORD=<yourpassword> e-mail-notify
+  $ docker run -d --name pastebin pastebin-crawler
+  $ docker run -d --name bing bing-crawler
+  $ docker run -d --name email-notify  email-notify
 ```
 
 ### Basic filters

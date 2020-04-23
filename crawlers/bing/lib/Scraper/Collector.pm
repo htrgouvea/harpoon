@@ -13,7 +13,7 @@ sub new {
 
     my $dork = $filter =~ s/\$string/$string/r;
 
-    for (my $page = 0; $page <= 10; $page++) {
+    for (my $page = 0; $page <= 5; $page++) {
         my $url = "http://www.bing.com/search?q=" . $dork . "&first=" . $page . "0";
                         
         $mech -> get($url);
