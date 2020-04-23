@@ -3,6 +3,7 @@ package Scraper::Collector;
 use strict;
 use warnings;
 use WWW::Mechanize;
+use Mojo::Util qw( url_escape);
 
 sub new {
     my ($self, $string, $filter) = @_;
@@ -11,7 +12,7 @@ sub new {
     my %seen = ();
     my @urls = ();
 
-    my $dork = $filter =~ s/\$string/$string/r;
+    my $dork = url_escape($filter =~ s/\$string/$string/r);
 
     for (my $page = 0; $page <= 5; $page++) {
         my $url = "http://www.bing.com/search?q=" . $dork . "&first=" . $page . "0";

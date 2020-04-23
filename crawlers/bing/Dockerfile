@@ -19,7 +19,7 @@ RUN apt -qy update \
     && apt clean \
   	&& apt -y autoremove
 
-RUN cpan install Config::Simple WWW::Mechanize DBIx::Custom
+RUN cpan install Config::Simple WWW::Mechanize DBIx::Custom Mojo::Util
 RUN crontab /etc/cron.d/cronjobs
 
 CMD ["cron", "-f"]
