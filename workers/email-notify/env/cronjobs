@@ -1,0 +1,2 @@
+*/30 * * * * perl /usr/src/e-mail-notify/app.pl
+#

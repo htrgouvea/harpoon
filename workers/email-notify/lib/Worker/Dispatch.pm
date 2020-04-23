@@ -3,29 +3,27 @@ package Worker::Dispatch;
 use strict;
 use warnings;
 use Try::Tiny;
-use Worker::Transport;
+use Mojo::File;
 use Email::MIME;
+use Worker::Transport;
 use Email::Sender::Simple qw(sendmail);
 
 sub new {
-    my ($self, $id, $idCompany, $ref, $content, $date, $recipient) = @_;
+    my ($self, $id, $company, $content, $date, $name, $recipient) = @_;
 
     my $transport = Worker::Transport -> new();
 
-    my $htmlbody = "
+    my $htmlTemplate = "
         <html>
             <body>
                 <h1>Report Boletim</h1>
                 <h3>
                     <p>
-                        <br>
-                        Uranus automated monitoring systems have detected a possible incident:<br>
-                        <br>
-                        <br>
-                        ID: $id<br>
-                        DATE: $date<br>
-                        URL: http://pastebin.com/$ref<br>
-                        CONTENT: $content<br>
+                        Uranus automated monitoring systems have detected a possible incident
+                        <br><br><br>
+                        <span>ID: $id</span><br/>
+                        <span>DATE: $date</span><br/>
+                        <span>CONTENT: $content</span><br/>
                     </p>
                 </h3>
                 <h4>
@@ -37,18 +35,18 @@ sub new {
 
     my $message = Email::MIME -> create (
         attributes  => {
-            content_type => 'multipart/alternative',
-            charset      => 'UTF-8',
+            content_type => "multipart/alternative",
+            charset      => "UTF-8",
         },
         header_str  => [
-            From    => "Heitor Gouvêa <hi\@heitorgouvea.me",
+            From    => "Uranus <hi\@heitorgouvea.me",
             To      => $recipient,
             Subject => "Report Boletim by Uranus",
         ],
         parts => [
             Email::MIME -> create (    
-                attributes => { content_type => 'text/html' },
-                body       => $htmlbody,
+                attributes => { content_type => "text/html" },
+                body       => $htmlTemplate
             )
         ],
     );
@@ -59,10 +57,13 @@ sub new {
                 transport => $transport
             }
         );
+
+        return 1;
     }
     
     catch {
         die "Error sending email: $_";
+        return 0;
     };
 
     return 1;

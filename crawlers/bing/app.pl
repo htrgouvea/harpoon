@@ -35,7 +35,7 @@ sub main {
 
                 if (length($query) == 1) {
                     my $query = $dbi -> model('alert') -> insert ({
-                        COMPANY => $rules[$item] -> {company},
+                        ID_COMPANY => $rules[$item] -> {company},
                         CONTENT => $url,
                         STATUS => 0,
                         NOTIFICATION => 0,

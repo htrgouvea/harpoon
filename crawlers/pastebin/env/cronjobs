@@ -1,0 +1,2 @@
+* */12 * * * perl /usr/src/pastebin/app.pl
+#
