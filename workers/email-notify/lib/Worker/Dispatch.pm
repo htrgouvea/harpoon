@@ -5,32 +5,18 @@ use warnings;
 use Try::Tiny;
 use Email::MIME;
 use Worker::Transport;
+use Worker::EmailTemplate;
 use Email::Sender::Simple qw(sendmail);
 
 sub new {
     my ($self, $id, $company, $content, $date, $name, $recipient) = @_;
 
     my $transport = Worker::Transport -> new();
+    my %template = Worker::EmailTemplate -> get();
 
-    my $htmlTemplate = "
-        <html>
-            <body>
-                <h1>Report Boletim</h1>
-                <h3>
-                    <p>
-                        Uranus automated monitoring systems have detected a possible incident
-                        <br><br><br>
-                        <span>ID: $id</span><br/>
-                        <span>DATE: $date</span><br/>
-                        <span>CONTENT: $content</span><br/>
-                    </p>
-                </h3>
-                <h4>
-                    <p>This e-mail was sent in an automated way and its disclosure is prohibited.</p>
-                </h4>
-            </body>
-        </html>
-    ";
+    $template{content} = $template{content} =~ s/\$id/$id/r;
+    $template{content} = $template{content} =~ s/\$date/$date/r;
+    $template{content} =$template{content} =~ s/\$content/$content/r;
 
     my $message = Email::MIME -> create (
         attributes  => {
@@ -38,14 +24,14 @@ sub new {
             charset      => "UTF-8",
         },
         header_str  => [
-            From    => "Uranus <hi\@heitorgouvea.me",
+            From    => $template{from},
             To      => $recipient,
-            Subject => "Report Boletim by Uranus",
+            Subject => $template{subject},
         ],
         parts => [
             Email::MIME -> create (    
                 attributes => { content_type => "text/html" },
-                body       => $htmlTemplate
+                body       => $template{content}
             )
         ],
     );
