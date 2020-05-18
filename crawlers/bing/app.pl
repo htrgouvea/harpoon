@@ -8,7 +8,6 @@ use Entities::Rules;
 use Entities::Connector;
 use Scraper::Collector;
 use Digest::MD5 qw(md5_hex);
-use Data::Dumper;
 
 sub main {
     my $dbi = Entities::Connector -> new();
