@@ -16,7 +16,7 @@ sub new {
 
     $template{content} = $template{content} =~ s/\$id/$id/r;
     $template{content} = $template{content} =~ s/\$date/$date/r;
-    $template{content} =$template{content} =~ s/\$content/$content/r;
+    $template{content} = $template{content} =~ s/\$content/$content/r;
 
     my $message = Email::MIME -> create (
         attributes  => {
