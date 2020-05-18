@@ -1,2 +1,4 @@
 *.DS_Store
-*config.ini
+*database.conf 
+*email.conf 
+*smtp.conf
