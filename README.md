@@ -18,6 +18,8 @@
 ---
 
 
+⚠️ __Warning:__ Uranus is currently in __beta__, you've been warned :) and please consider [contributing](/.github/CONTRIBUTING.md)
+
 ### How it works
 
 ```
