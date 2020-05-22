@@ -29,7 +29,11 @@ sub remove {
 		$self -> param('id')
 	);
 
-	$self -> redirect_to('/alert');
+	$self -> render (
+		json => $self -> alert -> find (
+        	$self -> param('id')
+      	)
+    );
 }
 
 sub store {
