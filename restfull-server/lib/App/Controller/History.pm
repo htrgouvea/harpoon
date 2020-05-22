@@ -29,7 +29,11 @@ sub remove {
 		$self -> param('id')
 	);
 
-	$self -> redirect_to('/history');
+	$self -> render (
+		json => $self -> history -> find (
+        	$self -> param('id')
+      	)
+    );
 }
 
 sub store {

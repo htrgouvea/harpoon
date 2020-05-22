@@ -29,7 +29,11 @@ sub remove {
 		$self -> param('id')
 	);
 
-	$self -> redirect_to('/rule');
+	$self -> render (
+		json => $self -> rule -> find (
+        	$self -> param('id')
+      	)
+    );
 }
 
 sub store {

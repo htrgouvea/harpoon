@@ -29,7 +29,11 @@ sub remove {
 		$self -> param('id')
 	);
 
-	$self -> redirect_to('/company');
+	$self -> render (
+		json => $self -> alert -> find (
+        	$self -> company('id')
+      	)
+    );
 }
 
 sub store {
