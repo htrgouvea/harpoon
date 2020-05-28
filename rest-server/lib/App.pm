@@ -3,6 +3,8 @@ package App;
 use strict;
 use warnings;
 use Mojo::mysql;
+use App::Helper;
+use App::Routes;
 use App::Model::Company;
 use App::Model::Rule;
 use App::Model::Alert;
