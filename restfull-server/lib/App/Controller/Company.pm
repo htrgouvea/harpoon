@@ -7,8 +7,8 @@ use Mojo::Base 'Mojolicious::Controller';
 sub index {
     my ($self) = @_;
 
-    $self -> render (
-      json => $self -> company -> all
+	$self -> render (
+      	json => $self -> company -> all
     );
 }
 
@@ -30,7 +30,7 @@ sub remove {
 	);
 
 	$self -> render (
-		json => $self -> alert -> find (
+		json => $self -> company -> find (
         	$self -> company('id')
       	)
     );
@@ -39,14 +39,32 @@ sub remove {
 sub store {
 	my ($self) = @_;
 
-	my $validation = $self -> _validation();
+	my $request = $self -> req -> json;
 
-	return $self -> render (
-		action => 'create', 
-		company => {}
-	) if $validation -> has_error;
+ 	# say Dumper($self -> req -> json);
 
-	my $id = $self -> company -> add($validation -> output);
+    my $validation = $self -> validation;
+
+    # $validation -> required("email");
+    # $validation -> required("name");
+	# $validation -> required("manager");
+	# $validation -> required("status");
+
+    if ($validation -> has_error()) {
+        return $self -> render (
+			json => "error"
+		);
+    }
+
+	my $email   = $self -> param("email");
+	my $name    = $self -> param("name");
+	my $manager = $self -> param("manager");
+	my $status  = $self -> param("status");
+	my $phone   = $self -> param("phone");
+
+	$self -> company -> add (
+		$email, $validation -> output
+	);
 
 	$self -> redirect_to('/company');
 }
@@ -54,31 +72,31 @@ sub store {
 sub update {
 	my ($self) = @_;
 
-	my $validation = $self -> _validation();
+	my $id      = $self -> param("id");
+	my $email   = $self -> param("email");
+	my $name    = $self -> param("name");
+	my $manager = $self -> param("manager");
+	my $status  = $self -> param("status");
+	my $phone   = $self -> param("phone");
 
-	return $self -> render (
-		action => 'edit',
-		alert => {}
-	) if $validation -> has_error;
-
-	my $id = $self -> param('id');
-	$self -> company -> save($id, $validation -> output);
+	$self -> company -> save (
+		$id, $email, $name, $manager, $status, $phone
+	);
 
 	$self -> render (
 		json => $self -> company -> all
 	);
-
-	# $self -> redirect_to('posts');
 }
 
 sub _validation {
 	my ($self) = @_;
 
-	my $validation = $self -> validation;
+	my $validation = $self -> validation();
 
 	$validation -> required("email");
 	$validation -> required("name");
 	$validation -> required("status");
+	$validation -> required("manager");
 
 	return $validation;
 }
