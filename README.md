@@ -1,6 +1,4 @@
 <p align="center">
-  <img src="https://heitorgouvea.me/images/projects/uranus/logo.jpg" height="150px" width="150px">
-  <p align="center">"if i reach out my hands, they touch your privacy"</p>
   <h1 align="center">Uranus</h1>
   <p align="center">
     An ecosystem of crawlers for detecting: leaks, sensitive data exposure and attempts exfiltration of data
@@ -15,11 +13,11 @@
   </p>
 </p>
 
+⚠️ __Warning:__ Uranus is currently in __development__, you've been warned :) and please consider [contributing!](/.github/CONTRIBUTING.md)
+
 ---
 
 ### Summary
-
-⚠️ __Warning:__ Uranus is currently in __beta__, you've been warned :) and please consider [contributing](/.github/CONTRIBUTING.md)
 
 This project is summarized in several crawlers that constitute a single ecosystem, that monitor certain channels such as: Github, Bing, Pastebin and iHaveBeenPwned? in order to perform data leak detection, exposed sensitive files and data exfiltration attempts.
 
@@ -34,27 +32,17 @@ This project is summarized in several crawlers that constitute a single ecosyste
   $ git clone https://github.com/GouveaHeitor/uranus && cd uranus
 
   # Building and starting MariaDB Database
-  $ docker build --rm --squash -t uranus-database ./database/
+  $ docker build --rm --squash -t uranus-database ./rest-server/migrations/
   $ docker run -d -p 3306:3306 --name database -e MARIADB_ROOT_PASSWORD=mypassword uranus-database
 
   # Building all crawlers and workers containers
-  $ docker build --rm --squash -t pastebin-crawler ./crawlers/pastebin/
   $ docker build --rm --squash -t bing-crawler ./crawlers/bing/
   $ docker build --rm --squash -t email-notify ./workers/email-notify
 
   # Running all crawlers
-  $ docker run -d --name pastebin pastebin-crawler
   $ docker run -d --name bing bing-crawler
-  $ docker run -d --name email-notify  email-notify
+  $ docker run -d --name email-notify email-notify
 ```
-
----
-
-### Basic filters
-
-  - Pastebin: HACK / HACKED / OWNED / PAWNED / PWNED / HACKIADO / HACKIADA / HACKEADO / VAZAMENTO / VAZADO / VAZADA / LEAK / LEAKED / INVASAO / INVADIDA / INVADIDO / DEFACE / DEFACEMENT / H4CK / H4CK3D / OWN3D / PWN3D / P3WN3D / H4CK14D0 / H4CK14D4 / V4Z4M3NT0 / V4Z4D0 / L34K / L34K3D / INV4S40 / INV4D1D4 / INV4D1D0 / D3F4C3 / D3F4C3M3NT
-
-  - Bing: 
 
 ---
 
