@@ -9,7 +9,7 @@ has 'mysql';
 sub add {
 	my ($self, $company) = @_;
 
-	return $self -> mysql -> db -> insert (
+	$self -> mysql -> db -> insert (
 		'company', $company, {
 			returning => 'id'
 		}
@@ -19,7 +19,7 @@ sub add {
 sub all {
 	my ($self) = @_;
 
-	$self -> mysql -> db -> select (
+	return $self -> mysql -> db -> select (
 		'company'
 	) -> hashes -> to_array;
 }
@@ -37,7 +37,7 @@ sub find {
 sub remove {
 	my ($self, $id) = @_;
 
-	$self -> mysql -> db -> delete (
+	return $self -> mysql -> db -> delete (
 		'company', {
 			id => $id
 		}
@@ -45,10 +45,10 @@ sub remove {
 }
 
 sub save {
-	my ($self, $id, $company) = @_;
+	my ($self, $id, $email, $name, $manager, $status, $phone) = @_;
 
 	$self -> mysql -> db -> update (
-		'company', $company, {
+		'company', $email, {
 			id => $id
 		}
 	);
