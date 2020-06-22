@@ -13,11 +13,11 @@
   </p>
 </p>
 
-⚠️ __Warning:__ Uranus is currently in __development__, you've been warned :) and please consider [contributing!](/.github/CONTRIBUTING.md)
-
 ---
 
 ### Summary
+
+⚠️ __Warning:__ Uranus is currently in __development__, you've been warned :) and please consider [contributing!](/.github/CONTRIBUTING.md)
 
 This project is summarized in several crawlers that constitute a single ecosystem, that monitor certain channels such as: Github, Bing, Pastebin and iHaveBeenPwned? in order to perform data leak detection, exposed sensitive files and data exfiltration attempts.
 
@@ -32,14 +32,18 @@ This project is summarized in several crawlers that constitute a single ecosyste
   $ git clone https://github.com/GouveaHeitor/uranus && cd uranus
 
   # Building and starting MariaDB Database
-  $ docker build --rm --squash -t uranus-database ./rest-server/migrations/
-  $ docker run -d -p 3306:3306 --name database -e MARIADB_ROOT_PASSWORD=mypassword uranus-database
+  $ docker build -t uranus-database ./rest-server/database/
+  $ docker run -d -p 3306:3306 --name database -e MARIADB_ROOT_PASSWORD=YourPasswordHere uranus-database
 
-  # Building all crawlers and workers containers
-  $ docker build --rm --squash -t bing-crawler ./crawlers/bing/
-  $ docker build --rm --squash -t email-notify ./workers/email-notify
+  # Building and starting the REST API
+  $ docker build
+  $ docker run
 
-  # Running all crawlers
+  # Building all crawlers/workers containers
+  $ docker build -t bing-crawler ./crawlers/bing/
+  $ docker build -t email-notify ./workers/email-notify
+
+  # Running all crawlers/workers containers
   $ docker run -d --name bing bing-crawler
   $ docker run -d --name email-notify email-notify
 ```
@@ -55,3 +59,12 @@ This project is summarized in several crawlers that constitute a single ecosyste
 ### License
 
 - This work is licensed under [MIT License.](/LICENSE.md)
+
+
+### To do
+
+  - Improve REST-API
+  - Improve Bing crawler (Documentation and engennering - how dorks works)
+  - Improve Documentation about Pastebin Crawler
+  - Implement a worker for Slack / Telegram
+  - Implement crawler for Github / Hunter.io (collect e-mails on hunter.io and check if is pwned on ihavebeenpwned and pwndb2am4tzkvold.onion)
