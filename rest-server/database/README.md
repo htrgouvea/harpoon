@@ -59,8 +59,8 @@ EVENT_QTT | INT - NOT NULL | Number of events generated
 ### Setup
 
 ```
-    $ docker build --rm --squash -t uranus-database ./database/
-    $ docker run -d -p 3306:3306 --name database -e MARIADB_ROOT_PASSWORD=mypassword uranus-database
+    $ docker build --rm --squash -t uranus-database .
+    $ docker run -d -p 3306:3306 --name database -e MARIADB_ROOT_PASSWORD=YourPasswordHere uranus-database
 ```
 
 ---
