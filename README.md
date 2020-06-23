@@ -21,7 +21,11 @@
 
 This project is summarized in several crawlers that constitute a single ecosystem, that monitor certain channels such as: Github, Bing, Pastebin and iHaveBeenPwned? in order to perform data leak detection, exposed sensitive files and data exfiltration attempts.
 
-![Image](https://heitorgouvea.me/images/projects/uranus/architecture.png)
+---
+
+### How it works
+
+![Image](/files/Diagram.png)
 
 ---
 
@@ -60,11 +64,12 @@ This project is summarized in several crawlers that constitute a single ecosyste
 
 - This work is licensed under [MIT License.](/LICENSE.md)
 
+---
 
 ### To do
 
-  - Improve REST-API
-  - Improve Bing crawler (Documentation and engennering - how dorks works)
-  - Improve Documentation about Pastebin Crawler
-  - Implement a worker for Slack / Telegram
-  - Implement crawler for Github / Hunter.io (collect e-mails on hunter.io and check if is pwned on ihavebeenpwned and pwndb2am4tzkvold.onion)
+- Improve REST-API
+- Improve Bing crawler (Documentation and engennering - how dorks works)
+- Improve Documentation about Pastebin Crawler
+- Implement a worker for Slack / Telegram
+- Implement crawler for Github / Hunter.io (collect e-mails on hunter.io and check if is pwned on ihavebeenpwned and pwndb2am4tzkvold.onion)
