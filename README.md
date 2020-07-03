@@ -1,8 +1,6 @@
 <p align="center">
-  <h1 align="center">Uranus</h1>
-  <p align="center">
-    An ecosystem of crawlers for detecting: leaks, sensitive data exposure and attempts exfiltration of data
-  </p>
+  <h3 align="center">Uranus</h3>
+  <p align="center">An ecosystem of crawlers for detecting: leaks, sensitive data exposure and attempts exfiltration of data</p>
   <p align="center">
     <a href="/LICENSE.md">
       <img src="https://img.shields.io/badge/license-MIT-blue.svg">
