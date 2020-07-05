@@ -19,7 +19,7 @@ sub startup {
 
 	$self -> helper (
 		mysql => sub {
-			state $mysql = Mojo::mysql -> new (
+			state $mysql = Mojo::mysql -> strict_mode (
 				shift -> config("mysql")
 			)
 		}
