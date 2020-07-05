@@ -8,7 +8,8 @@ sub index {
     my ($self) = @_;
 
 	$self -> render (
-      	json => $self -> company -> all
+      	json => $self -> company -> all,
+		status => 200
     );
 }
 
@@ -16,9 +17,8 @@ sub show {
     my ($self) = @_;
 
     $self -> render (
-		json => $self -> company -> find (
-        	$self -> param("id")
-      	)
+		json => $self -> company -> find ($self -> param("id")),
+		status => 200
     );
 }
 
