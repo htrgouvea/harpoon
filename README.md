@@ -25,6 +25,9 @@ This project is summarized in several crawlers that constitute a single ecosyste
 
 ![Image](/files/Diagram.png)
 
+
+- You can [click here](/rest-server/database/README.md) to see a diagram of the database and also a catalog on them.
+
 ---
 
 ### Download and setup
@@ -35,7 +38,7 @@ This project is summarized in several crawlers that constitute a single ecosyste
 
   # Building and starting MariaDB Database
   $ docker build -t uranus-database ./rest-server/database/
-  $ docker run -d -p 3306:3306 --name database -e MARIADB_ROOT_PASSWORD=YourPasswordHere uranus-database
+  $ docker run -d -p 3306:3306 --name database -e MARIADB_ROOT_PASSWORD=mypassword uranus-database
 
   # Building and starting the REST API
   $ docker build
@@ -61,13 +64,3 @@ This project is summarized in several crawlers that constitute a single ecosyste
 ### License
 
 - This work is licensed under [MIT License.](/LICENSE.md)
-
----
-
-### To do
-
-- Improve REST-API
-- Improve Bing crawler (Documentation and engennering - how dorks works)
-- Improve Documentation about Pastebin Crawler
-- Implement a worker for Slack / Telegram
-- Implement crawler for Github / Hunter.io (collect e-mails on hunter.io and check if is pwned on ihavebeenpwned and pwndb2am4tzkvold.onion)
