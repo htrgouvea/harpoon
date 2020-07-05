@@ -2,7 +2,7 @@ package App::Controller::Rule;
 
 use strict;
 use warnings;
-use Mojo::Base 'Mojolicious::Controller';
+use Mojo::Base "Mojolicious::Controller";
 
 sub index {
     my ($self) = @_;
@@ -17,7 +17,7 @@ sub show {
 
     $self -> render (
 		json => $self -> rule -> find (
-        	$self -> param('id')
+        	$self -> param("id")
       	)
     );
 }
@@ -26,12 +26,12 @@ sub remove {
 	my ($self) = @_;
 
 	$self -> rule -> remove (
-		$self -> param('id')
+		$self -> param("id")
 	);
 
 	$self -> render (
 		json => $self -> rule -> find (
-        	$self -> param('id')
+        	$self -> param("id")
       	)
     );
 }
@@ -42,13 +42,13 @@ sub store {
 	my $validation = $self -> _validation();
 
 	return $self -> render (
-		action => 'create', 
+		action => "create", 
 		rule => {}
 	) if $validation -> has_error;
 
 	my $id = $self -> rule -> add($validation -> output);
 
-	$self -> redirect_to('/rule');
+	$self -> redirect_to("/rule");
 }
 
 sub update {
@@ -57,18 +57,18 @@ sub update {
 	my $validation = $self -> _validation();
 
 	return $self -> render (
-		action => 'edit',
+		action => "edit",
 		alert => {}
 	) if $validation -> has_error;
 
-	my $id = $self -> param('id');
+	my $id = $self -> param("id");
 	$self -> rule -> save($id, $validation -> output);
 
 	$self -> render (
 		json => $self -> rule -> all
 	);
 
-	# $self -> redirect_to('posts');
+	# $self -> redirect_to("posts");
 }
 
 sub _validation {

@@ -7,4 +7,4 @@ use lib "./lib/";
 
 require Mojolicious::Commands;
 
-Mojolicious::Commands -> start_app('App');
+Mojolicious::Commands -> start_app("App");

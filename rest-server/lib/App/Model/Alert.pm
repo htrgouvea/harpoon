@@ -4,14 +4,14 @@ use strict;
 use warnings;
 use Mojo::Base -base;
 
-has 'mysql';
+has "mysql";
 
 sub add {
 	my ($self, $alert) = @_;
 
 	return $self -> mysql -> db -> insert (
-		'alert', $alert, {
-			returning => 'id'
+		"alert", $alert, {
+			returning => "id"
 		}
 	) -> hash -> {id};
 }
@@ -20,7 +20,7 @@ sub all {
 	my ($self) = @_;
 
 	$self -> mysql -> db -> select (
-		'alert'
+		"alert"
 	) -> hashes -> to_array;
 }
 
@@ -28,7 +28,7 @@ sub find {
 	my ($self, $id) = @_;
 
 	return $self -> mysql -> db -> select (
-		'alert', undef, {
+		"alert", undef, {
 			id => $id
 		}
 	) -> hash;
@@ -38,7 +38,7 @@ sub remove {
 	my ($self, $id) = @_;
 
 	$self -> mysql -> db -> delete (
-		'alert', {
+		"alert", {
 			id => $id
 		}
 	);
@@ -48,7 +48,7 @@ sub save {
 	my ($self, $id, $alert) = @_;
 
 	$self -> mysql -> db -> update (
-		'alert', $alert, {
+		"alert", $alert, {
 			id => $id
 		}
 	);
