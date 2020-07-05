@@ -2,7 +2,7 @@ package App::Controller::Company;
 
 use strict;
 use warnings;
-use Mojo::Base 'Mojolicious::Controller';
+use Mojo::Base "Mojolicious::Controller";
 
 sub index {
     my ($self) = @_;
@@ -17,7 +17,7 @@ sub show {
 
     $self -> render (
 		json => $self -> company -> find (
-        	$self -> param('id')
+        	$self -> param("id")
       	)
     );
 }
@@ -26,12 +26,12 @@ sub remove {
 	my ($self) = @_;
 
 	$self -> company -> remove (
-		$self -> param('id')
+		$self -> param("id")
 	);
 
 	$self -> render (
 		json => $self -> company -> find (
-        	$self -> company('id')
+        	$self -> company("id")
       	)
     );
 }
@@ -66,7 +66,7 @@ sub store {
 		$email, $validation -> output
 	);
 
-	$self -> redirect_to('/company');
+	$self -> redirect_to("/company");
 }
 
 sub update {
