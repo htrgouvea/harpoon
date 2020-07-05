@@ -3,7 +3,7 @@ package App;
 use strict;
 use warnings;
 use Mojo::mysql;
-use App::Helper;
+use App::Helpers;
 use App::Routes;
 use App::Model::Company;
 use App::Model::Rule;
@@ -19,7 +19,7 @@ sub startup {
 
 	$self -> helper (
 		mysql => sub {
-			state $mysql = Mojo::mysql -> strict_mode (
+			state $mysql = Mojo::mysql -> new (
 				shift -> config("mysql")
 			)
 		}
