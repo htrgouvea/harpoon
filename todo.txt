@@ -1,0 +1,5 @@
+- Improve REST-API
+- Improve Bing crawler (Documentation and engennering - how dorks works)
+- Improve Documentation about Pastebin Crawler
+- Implement a worker for Slack / Telegram
+- Implement crawler for Github / Hunter.io (collect e-mails on hunter.io and check if is pwned on ihavebeenpwned and pwndb2am4tzkvold.onion)
