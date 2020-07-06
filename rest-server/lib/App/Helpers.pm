@@ -2,16 +2,12 @@ package App::Helpers;
 
 use strict;
 use warnings;
-use base 'Mojolicious::Plugin';
+use Mojo::Base -base;
+
+has "helpers";
 
 sub register {
-    my ($self, $app) = @_;
-
-    $app -> helper (
-		mypluginhelper => sub { 
-			return 'I am your helper and I live in a plugin!';
-		}
-	);
+    my ($self) = @_;
 }   
 
 1;
