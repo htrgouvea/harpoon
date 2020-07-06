@@ -41,8 +41,8 @@ This project is summarized in several crawlers that constitute a single ecosyste
   $ docker run -d -p 3306:3306 --name database -e MARIADB_ROOT_PASSWORD=mypassword uranus-database
 
   # Building and starting the REST API
-  $ docker build
-  $ docker run
+  $ docker build -t uranus-rest-server ./rest-server.
+  $ docker run -d -p 80:80 --name rest-server uranus-rest-server
 
   # Building all crawlers/workers containers
   $ docker build -t bing-crawler ./crawlers/bing/
