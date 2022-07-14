@@ -1,2 +1,0 @@
-*/30 * * * * perl /usr/src/slack-notify/app.pl
-#
