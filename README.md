@@ -1,6 +1,6 @@
 <p align="center">
-    <img src="https://heitorgouvea.me/images/projects/uranus/logo.jpg" width="150px" height="150px">
-  <h3 align="center"><b>Uranus</b></h3>
+  <h3 align="center">Harpoon</h3>
+  <img src="https://heitorgouvea.me/images/projects/uranus/logo.jpg" width="150px" height="150px">
   <p align="center">An ecosystem of crawlers for detecting: leaks, sensitive data exposure and attempts exfiltration of data</p>
   <p align="center">
     <a href="/LICENSE.md">
@@ -16,7 +16,7 @@
 
 ### Summary
 
-⚠️ __Warning:__ Uranus is currently in __development__, you've been warned :) and please consider [contributing!](/.github/CONTRIBUTING.md)
+⚠️ __Warning:__ Harpoon is currently in __development__, you've been warned :) and please consider [contributing!](/.github/CONTRIBUTING.md)
 
 This project is summarized in several crawlers that constitute a single ecosystem, that monitor certain channels such as: Github, Bing, Pastebin and iHaveBeenPwned? in order to perform data leak detection, exposed sensitive files and data exfiltration attempts.
 
@@ -60,7 +60,7 @@ This project is summarized in several crawlers that constitute a single ecosyste
 
 - Your contributions and suggestions are heartily ♥ welcome. [See here the contribution guidelines.](/.github/CONTRIBUTING.md) Please, report bugs via [issues page](https://github.com/GouveaHeitor/uranus/issues) and for security issues, see here the [security policy.](/SECURITY.md) (✿ ◕‿◕) This project follows the best practices defined by this [style guide](https://heitorgouvea.me/projects/perl-style-guide).
 
-- If you want to contribute financially to this project, an alternative is to become my ["Patreon"](https://patreon.com/offgouvea) or make a donation via [Paypal.](https://www.paypal.com/donate?hosted_button_id=4283L7ZNWN3M6)
+- If you are interested in providing financial support to this project, please visit: [heitorgouvea.me/donate](https://heitorgouvea.me/donate)
 
 ---
 
