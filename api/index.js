@@ -1,15 +1,16 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const dotenv = require('dotenv')
+dotenv.config
+
+const port = 3000 || process.env.APPLICATION_PORT
+
+app.use(express.json())
 
 const alertsRoutes = require('./routes/alerts')
 const companyRoutes = require('./routes/company')
 const historyRoutes = require('./routes/history')
 const ruleRoutes = require('./routes/rule')
-
-app.get('/', (request, response) => {
-  repsonse.send('Hello World!')
-})
 
 app.use('/alerts', alertsRoutes)
 app.use('/company', companyRoutes)
