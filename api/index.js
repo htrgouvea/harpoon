@@ -1,9 +1,9 @@
 const express = require('express')
 const app = express()
 const dotenv = require('dotenv')
-dotenv.config
+dotenv.config()
 
-const port = 3000 || process.env.APPLICATION_PORT
+const port = process.env.APPLICATION_PORT || 3000
 
 app.use(express.json())
 
