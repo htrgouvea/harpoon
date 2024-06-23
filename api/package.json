@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "Giovanni Martins <giovannimartins2000@gmail.com>",
   "license": "MIT",
@@ -11,5 +12,8 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "pg": "^8.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }
