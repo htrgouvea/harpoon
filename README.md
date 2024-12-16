@@ -1,6 +1,5 @@
 <p align="center">
   <h3 align="center">Harpoon</h3>
-  <img src="https://heitorgouvea.me/images/projects/uranus/logo.jpg" width="150px" height="150px">
   <p align="center">An ecosystem of crawlers for detecting: leaks, sensitive data exposure and attempts exfiltration of data</p>
   <p align="center">
     <a href="/LICENSE.md">
@@ -9,6 +8,9 @@
     <a href="https://github.com/GouveaHeitor/uranus/releases">
       <img src="https://img.shields.io/badge/version-0.1.6-blue.svg">
     </a>
+    <img src="https://github.com/htrgouvea/harpoon/actions/workflows/linter.yml/badge.svg">
+    <img src="https://github.com/htrgouvea/harpoon/actions/workflows/zarn.yml/badge.svg">
+    <img src="https://github.com/htrgouvea/harpoon/actions/workflows/security-gate.yml/badge.svg">
   </p>
 </p>
 
