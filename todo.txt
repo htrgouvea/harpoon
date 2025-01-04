@@ -2,3 +2,7 @@
 - Improve Bing crawler (Documentation and engennering - how dorks works)
 - Improve Documentation about Pastebin Crawler
 - Implement crawler for Github / Hunter.io (collect e-mails on hunter.io and check if is pwned on ihavebeenpwned and pwndb2am4tzkvold.onion)
+- crawler Twitter / Linkedin / Telegram Groups / WhatsApp Groups 
+- web console / dashboard
+- separete engine detections in a exclusive module
+- implement workers for notifications: e-mail / telegram / 
