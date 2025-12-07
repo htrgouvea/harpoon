@@ -1,0 +1,34 @@
+services:
+  db:
+    container_name: harpoon_database
+    image: postgres:latest
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d
+    ports:
+      - "${DATABASE_PORT}:${DATABASE_PORT}"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "${DATABASE_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
+
+  app:
+    container_name: harpoon_app
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${APPLICATION_PORT}:${APPLICATION_PORT}"
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - db
+    restart: unless-stopped
