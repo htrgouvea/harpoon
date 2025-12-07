@@ -1,0 +1,21 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Giovanni Martins <giovannimartins2000@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "compression": "^1.8.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "helmet": "^8.1.0",
+    "pg": "^8.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
