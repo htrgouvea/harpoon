@@ -5,7 +5,11 @@ const companyService = require('../services/companyService')
 router.get('/', async (request, response) => {
   try {
     const hasPagination = request.query.page !== undefined || request.query.limit !== undefined
-    const limit = hasPagination ? parseInt(request.query.limit) || 100 : null
+    let limit = null
+    if (hasPagination) {
+      const parsedLimit = parseInt(request.query.limit)
+      limit = parsedLimit || 100
+    }
     const page = parseInt(request.query.page) || 0
     const offset = page * (limit || 0)
 
@@ -16,9 +20,10 @@ router.get('/', async (request, response) => {
         data: companies,
         pagination: { page, limit, total: companies.length }
       })
-    } else {
-      response.status(200).json(companies)
+      return
     }
+
+    response.status(200).json(companies)
   } catch (error) {
     console.error('Error fetching companies:', error)
     response.status(500).json({ error: 'Internal server error' })
