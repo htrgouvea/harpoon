@@ -5,7 +5,11 @@ const historyService = require('../services/historyService')
 router.get('/', async (request, response) => {
   try {
     const hasPagination = request.query.page !== undefined || request.query.limit !== undefined
-    const limit = hasPagination ? parseInt(request.query.limit) || 100 : null
+    let limit = null
+    if (hasPagination) {
+      const parsedLimit = parseInt(request.query.limit)
+      limit = parsedLimit || 100
+    }
     const page = parseInt(request.query.page) || 0
     const offset = page * (limit || 0)
 
@@ -16,9 +20,10 @@ router.get('/', async (request, response) => {
         data: history,
         pagination: { page, limit, total: history.length }
       })
-    } else {
-      response.status(200).json(history)
+      return
     }
+
+    response.status(200).json(history)
   } catch (error) {
     console.error('Error fetching history records:', error)
     response.status(500).json({ error: 'Internal server error' })
