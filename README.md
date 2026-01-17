@@ -8,6 +8,7 @@
     <a href="https://github.com/GouveaHeitor/uranus/releases">
       <img src="https://img.shields.io/badge/version-0.1.6-blue.svg">
     </a>
+    <br/>
     <img src="https://github.com/htrgouvea/harpoon/actions/workflows/linter.yml/badge.svg">
     <img src="https://github.com/htrgouvea/harpoon/actions/workflows/zarn.yml/badge.svg">
     <img src="https://github.com/htrgouvea/harpoon/actions/workflows/security-gate.yml/badge.svg">
