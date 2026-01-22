@@ -5,23 +5,23 @@ use warnings;
 use Entities::Connector;
 
 sub new {
-    my $dbi = Entities::Connector -> new();
+    my $database_handle = Entities::Connector -> new();
 
-    $dbi -> create_model('pastebin_rule');
+    $database_handle -> create_model('pastebin_rule');
 
-    my $rules = $dbi -> model('pastebin_rule') -> select(['ID_RULE', 'ID_COMPANY', 'WORD', 'FILTER']);
-    my @data;
+    my $rules_query = $database_handle -> model('pastebin_rule') -> select(['ID_RULE', 'ID_COMPANY', 'WORD', 'FILTER']);
+    my @rule_data;
 
-    while (my $rule = $rules -> fetch_hash) {
-        push @data, {
-            id => $rule -> {ID_RULE},
-            idCompany => $rule -> {ID_COMPANY},
-            word => $rule -> {WORD},
-            filter => $rule -> {FILTER}
+    while (my $rule_record = $rules_query -> fetch_hash) {
+        push @rule_data, {
+            id => $rule_record -> {ID_RULE},
+            company_id => $rule_record -> {ID_COMPANY},
+            word => $rule_record -> {WORD},
+            filter => $rule_record -> {FILTER}
         };
     }
 
-    return @data;
+    return @rule_data;
 }
 
 1;
