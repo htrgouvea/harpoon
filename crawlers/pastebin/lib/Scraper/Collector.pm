@@ -7,18 +7,18 @@ use LWP::UserAgent;
 
 sub new {
     my $endpoint  = "http://scrape.pastebin.com/api_scraping.php?limit=250";
-    my $userAgent = LWP::UserAgent -> new();
-    my $request   = $userAgent -> get($endpoint);
-    my $httpCode  = $request -> code();
+    my $user_agent = LWP::UserAgent -> new();
+    my $response   = $user_agent -> get($endpoint);
+    my $status_code  = $response -> code();
 
-    if ($httpCode == "200") {
-        my $datas = decode_json ($request -> content);
+    if ($status_code == "200") {
+        my $data_entries = decode_json ($response -> content);
 
         my @keys;
 
-        foreach my $data (@$datas) {
-            my $key = $data -> {'key'};
-            push @keys, $key;
+        foreach my $entry (@$data_entries) {
+            my $paste_key = $entry -> {'key'};
+            push @keys, $paste_key;
         }
 
         return @keys;

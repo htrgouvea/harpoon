@@ -5,29 +5,29 @@ use warnings;
 use Entities::Connector;
 
 sub new {
-    my $dbi = Entities::Connector -> new();
+    my $database_handle = Entities::Connector -> new();
 
-    $dbi -> create_model('rule');
+    $database_handle -> create_model('rule');
 
-    my $rules = $dbi -> model('rule') -> select(
+    my $rules_query = $database_handle -> model('rule') -> select(
         ['ID_RULE', 'ID_COMPANY', 'STRING', 'FILTER'],
         where => {
             SOURCE => "BING"
         }
     );
 
-    my @data;
+    my @rule_data;
 
-    while (my $rule = $rules -> fetch_hash) {
-        push @data, {
-            id => $rule -> {ID_BING_RULE},
-            company => $rule -> {ID_COMPANY},
-            string => $rule -> {STRING},
-            filter => $rule -> {FILTER}
+    while (my $rule_record = $rules_query -> fetch_hash) {
+        push @rule_data, {
+            id => $rule_record -> {ID_RULE},
+            company => $rule_record -> {ID_COMPANY},
+            string => $rule_record -> {STRING},
+            filter => $rule_record -> {FILTER}
         };
     }
 
-    return @data;
+    return @rule_data;
 }
 
 1;

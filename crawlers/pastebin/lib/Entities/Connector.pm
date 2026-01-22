@@ -13,7 +13,9 @@ sub new {
     my $password = $config -> param('db_password');
     my $database = $config -> param('db_database');
 
-    my $dbi = DBIx::Custom -> connect("DBI:mysql:$database;host=$hostname", $username, $password);
+    my $database_handle = DBIx::Custom -> connect("DBI:mysql:$database;host=$hostname", $username, $password);
+
+    return $database_handle;
 }
 
 1;

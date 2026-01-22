@@ -10,43 +10,43 @@ use Scraper::Agent;
 use Scraper::Collector;
 
 sub main {
-    my $dbi = Entities::Connector -> new();
+    my $database_handle = Entities::Connector -> new();
 
-    if ($dbi) {
-        $dbi -> create_model('pastebin_alert');
-        $dbi -> create_model('pastebin_history');
+    if ($database_handle) {
+        $database_handle -> create_model('pastebin_alert');
+        $database_handle -> create_model('pastebin_history');
 
-        my @rules = Entities::Rules -> new();
-        my @collector = Scraper::Collector -> new();
+        my @rule_entries = Entities::Rules -> new();
+        my @paste_keys = Scraper::Collector -> new();
 
-        foreach my $key (@collector) {
-            my $query = eval {$dbi -> model('pastebin_history') -> select(
-                ['REF'], where => {REF => $key}
+        foreach my $paste_key (@paste_keys) {
+            my $history_record = eval {$database_handle -> model('pastebin_history') -> select(
+                ['REF'], where => {REF => $paste_key}
             ) -> fetch -> [0]} || 1;
 
-            print "[+] -> $key\n";
+            print "[+] -> $paste_key\n";
 
-            if ($query eq "1") {
-                foreach my $value (keys @rules) {
-                    my $agent = Scraper::Agent -> new (
-                        $key,
-                        $rules[$value] -> {idCompany},
-                        $rules[$value] -> {word},
-                        $rules[$value] -> {filter}
+            if ($history_record eq "1") {
+                foreach my $rule_index (keys @rule_entries) {
+                    my $agent_result = Scraper::Agent -> new (
+                        $paste_key,
+                        $rule_entries[$rule_index] -> {company_id},
+                        $rule_entries[$rule_index] -> {word},
+                        $rule_entries[$rule_index] -> {filter}
                     );
 
-                    if ($agent ne "false") {
-                        my $query = $dbi -> model('pastebin_alert') -> insert ({
-                            ID_COMPANY => $rules[$value] -> {idCompany},
-                            CONTENT => $agent,
+                    if ($agent_result ne "false") {
+                        my $insert_result = $database_handle -> model('pastebin_alert') -> insert ({
+                            ID_COMPANY => $rule_entries[$rule_index] -> {company_id},
+                            CONTENT => $agent_result,
                             STATUS => 0,
                             NOTIFICATION => 0,
-                            REF => $key
+                            REF => $paste_key
                         });
                     }
                 }
                 
-                my $query = $dbi -> model('pastebin_history') -> insert({REF => $key});
+                my $insert_result = $database_handle -> model('pastebin_history') -> insert({REF => $paste_key});
             }
         }
     }

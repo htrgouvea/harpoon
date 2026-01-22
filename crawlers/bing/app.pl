@@ -10,31 +10,31 @@ use Scraper::Collector;
 use Digest::MD5 qw(md5_hex);
 
 sub main {
-    my $dbi = Entities::Connector -> new();
+    my $database_handle = Entities::Connector -> new();
 
-    if ($dbi) {
-        $dbi -> create_model('alert');
+    if ($database_handle) {
+        $database_handle -> create_model('alert');
 
-        my @rules = Entities::Rules -> new();
+        my @rule_entries = Entities::Rules -> new();
 
-        foreach my $item (keys @rules) {
-            my $string = $rules[$item] -> {string};
-            my $filter = $rules[$item] -> {filter};
-            
-            my @collector = Scraper::Collector -> new($string, $filter);
+        foreach my $rule_index (keys @rule_entries) {
+            my $search_string = $rule_entries[$rule_index] -> {string};
+            my $search_filter = $rule_entries[$rule_index] -> {filter};
 
-            foreach my $url (@collector) {
+            my @collected_urls = Scraper::Collector -> new($search_string, $search_filter);
+
+            foreach my $url (@collected_urls) {
                 my $md5_hash = md5_hex($url);
-                
-                my $query = eval {
-                    $dbi -> model('alert') -> select(
+
+                my $existing_hash = eval {
+                    $database_handle -> model('alert') -> select(
                         ['HASH'], where => { HASH => $md5_hash }
                     ) -> fetch -> [0]
                 } || 1;
 
-                if (length($query) == 1) {
-                    my $query = $dbi -> model('alert') -> insert ({
-                        ID_COMPANY => $rules[$item] -> {company},
+                if (length($existing_hash) == 1) {
+                    my $insert_result = $database_handle -> model('alert') -> insert ({
+                        ID_COMPANY => $rule_entries[$rule_index] -> {company},
                         CONTENT => $url,
                         STATUS => 0,
                         NOTIFICATION => 0,
@@ -44,7 +44,7 @@ sub main {
             }
         }
     }
-}   
+}
 
 main();
 exit;
