@@ -1,4 +1,9 @@
 severity = 4
 
+[-CodeLayout::RequireTidyCode]
 [-TestingAndDebugging::RequireUseStrict]
-[-InputOutput::RequireCheckedSyscalls]
+[-TestingAndDebugging::RequireUseWarnings]
+
+[InputOutput::RequireCheckedSyscalls]
+functions = :builtins
+exclude_functions = print say
