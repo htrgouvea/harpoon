@@ -1,0 +1,2 @@
+requires 'Mojolicious', '9.42';
+requires 'Mojo::Pg', '4.29';

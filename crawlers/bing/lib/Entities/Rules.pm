@@ -1,5 +1,7 @@
 package Entities::Rules;
 
+our $VERSION = '0.01';
+
 use strict;
 use warnings;
 use Entities::Connector;
@@ -12,7 +14,7 @@ sub new {
     my $rules_query = $database_handle -> model('rule') -> select(
         ['ID_RULE', 'ID_COMPANY', 'STRING', 'FILTER'],
         where => {
-            SOURCE => "BING"
+            SOURCE => q{BING}
         }
     );
 

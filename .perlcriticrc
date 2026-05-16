@@ -1,8 +1,11 @@
-severity = 4
+severity = 1
 
 [-CodeLayout::RequireTidyCode]
 [-TestingAndDebugging::RequireUseStrict]
 [-TestingAndDebugging::RequireUseWarnings]
+[-Subroutines::ProhibitSubroutinePrototypes]
+[-ValuesAndExpressions::ProhibitConstantPragma]
+[-ValuesAndExpressions::RequireInterpolationOfMetachars]
 
 [InputOutput::RequireCheckedSyscalls]
 functions = :builtins

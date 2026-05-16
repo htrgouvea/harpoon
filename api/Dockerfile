@@ -1,13 +1,16 @@
-FROM node:lts
+FROM perl:5.40
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends libpq-dev build-essential cpanminus \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN npm install
+COPY cpanfile ./
+RUN cpanm --notest --installdeps .
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 5000
 
-CMD ["npm", "run", "dev"]
+CMD ["sh", "-lc", "./script/harpoon_api daemon -l http://*:${APPLICATION_PORT:-5000}"]

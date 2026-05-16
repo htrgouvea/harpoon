@@ -3,11 +3,13 @@
 use 5.018;
 use strict;
 use warnings;
-use lib "./lib/";
+use lib q{./lib/};
 use Entities::Rules;
 use Entities::Connector;
 use Scraper::Collector;
 use Digest::MD5 qw(md5_hex);
+
+our $VERSION = '0.01';
 
 sub main {
     my $database_handle = Entities::Connector -> new();
@@ -26,11 +28,15 @@ sub main {
             foreach my $url (@collected_urls) {
                 my $md5_hash = md5_hex($url);
 
-                my $existing_hash = eval {
-                    $database_handle -> model('alert') -> select(
-                        ['HASH'], where => { HASH => $md5_hash }
-                    ) -> fetch -> [0]
-                } || 1;
+                my $alert_model = $database_handle -> model('alert');
+                my $hash_query = $alert_model -> select(
+                    ['HASH'], where => { HASH => $md5_hash }
+                );
+                my $hash_row = $hash_query -> fetch;
+                my $existing_hash = 1;
+                if ($hash_row) {
+                    $existing_hash = $hash_row -> [0] || 1;
+                }
 
                 if (length($existing_hash) == 1) {
                     my $insert_result = $database_handle -> model('alert') -> insert ({
@@ -44,7 +50,8 @@ sub main {
             }
         }
     }
+
+    return 0;
 }
 
-main();
-exit;
+exit main();

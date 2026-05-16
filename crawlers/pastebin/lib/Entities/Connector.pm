@@ -1,5 +1,7 @@
 package Entities::Connector;
 
+our $VERSION = '0.01';
+
 use strict;
 use warnings;
 use DBIx::Custom;
@@ -7,7 +9,7 @@ use Config::Simple;
 
 sub new {
     my $config   = Config::Simple -> new('/usr/src/pastebin/env/database.conf');
-    
+
     my $hostname = $config -> param('db_hostname');
     my $username = $config -> param('db_username');
     my $password = $config -> param('db_password');

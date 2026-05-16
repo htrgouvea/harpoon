@@ -40,7 +40,7 @@ if ! curl -s -f "$API_URL/company" > /dev/null 2>&1; then
     echo -e "${YELLOW}⚠️  API is not responding at $API_URL${NC}"
     echo ""
     echo "Make sure the application is running:"
-    echo "  cd api && npm install && npm start"
+    echo "  cd api && cpanm --installdeps . && ./script/harpoon_api daemon -l http://*:5000"
     echo "  or"
     echo "  docker compose up"
     echo ""

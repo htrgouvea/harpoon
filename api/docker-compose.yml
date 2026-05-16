@@ -28,7 +28,7 @@ services:
     ports:
       - "${APPLICATION_PORT}:${APPLICATION_PORT}"
     environment:
-      - NODE_ENV=development
+      - MOJO_MODE=development
     depends_on:
       - db
     restart: unless-stopped
