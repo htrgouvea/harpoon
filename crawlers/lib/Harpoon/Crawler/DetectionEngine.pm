@@ -15,7 +15,7 @@ sub matches_keyword_and_filters {
     my @filter_rules = split m{ \s / \s }msx, $filters;
 
     my $keyword_pattern = quotemeta $normalized_keyword;
-    my @filter_patterns = map { quotemeta uc $_ } @filter_rules;
+    my @filter_patterns = map { quotemeta uc } @filter_rules;
 
     return 0 if $normalized_content !~ m/$keyword_pattern/msx;
 

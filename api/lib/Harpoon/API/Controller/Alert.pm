@@ -19,7 +19,9 @@ sub list ($self) {
             $pagination->{limit},
             $pagination->{offset}
         );
-        $total = $service -> get_count() if $pagination->{has_pagination};
+        if ($pagination->{has_pagination}) {
+            $total = $service -> get_count();
+        }
         1;
     } or do {
         my $error = $EVAL_ERROR;
