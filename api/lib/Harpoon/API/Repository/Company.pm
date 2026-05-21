@@ -36,6 +36,13 @@ sub find_by_id ($self, $id) {
     return $results -> hash;
 }
 
+sub count_all ($self) {
+    my $db = $self -> pg -> db;
+    my $results = $db -> query('SELECT COUNT(*) AS total FROM public.company');
+
+    return $results -> hash->{total};
+}
+
 sub create ($self, $data) {
     my $db = $self -> pg -> db;
     my $results = $db -> query(

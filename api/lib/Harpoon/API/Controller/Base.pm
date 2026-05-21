@@ -58,4 +58,22 @@ sub json_internal_error ($self) {
     return $self -> render(status => 500, json => {error => 'Internal server error'});
 }
 
+sub render_collection ($self, $collection, $pagination, $total) {
+    if (!$pagination->{has_pagination}) {
+        return $self -> render(status => 200, json => $collection);
+    }
+
+    return $self -> render(
+        status => 200,
+        json => {
+            data => $collection,
+            pagination => {
+                page => $pagination->{page},
+                limit => $pagination->{limit},
+                total => $total
+            }
+        }
+    );
+}
+
 1;

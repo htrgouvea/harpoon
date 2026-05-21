@@ -4,7 +4,7 @@ our $VERSION = '0.01';
 
 use strict;
 use warnings;
-use JSON;
+use Harpoon::Crawler::DetectionEngine;
 use LWP::UserAgent;
 
 use constant HTTP_OK => 200;
@@ -17,20 +17,11 @@ sub new {
     my $response   = $user_agent -> get($endpoint);
     my $status_code  = $response -> code();
 
-    my @filter_rules = split m{ \s / \s }msx, $filters;
-
     if ($status_code == HTTP_OK) {
-        my $data = uc $response -> content();
+        my $data = $response -> content();
 
-        $keyword = uc $keyword;
-        my $keyword_pattern = quotemeta $keyword;
-        my @filter_patterns = map { quotemeta } @filter_rules;
-
-        if (
-            ($data =~ m/$keyword_pattern/msx)
-            && (0 < grep { $data =~ m/$_/imsx } @filter_patterns)
-        ) {
-            return $data;
+        if (Harpoon::Crawler::DetectionEngine -> matches_keyword_and_filters($data, $keyword, $filters)) {
+            return uc $data;
         }
     }
 

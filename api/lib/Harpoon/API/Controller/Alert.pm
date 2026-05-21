@@ -13,11 +13,13 @@ sub list ($self) {
     my $pagination = $self -> pagination_metadata;
 
     my $alerts;
+    my $total;
     eval {
         $alerts = $service -> get_all(
             $pagination->{limit},
             $pagination->{offset}
         );
+        $total = $service -> get_count() if $pagination->{has_pagination};
         1;
     } or do {
         my $error = $EVAL_ERROR;
@@ -25,21 +27,7 @@ sub list ($self) {
         return $self -> json_internal_error;
     };
 
-    if ($pagination->{has_pagination}) {
-        return $self -> render(
-            status => 200,
-            json => {
-                data => $alerts,
-                pagination => {
-                    page => $pagination->{page},
-                    limit => $pagination->{limit},
-                    total => scalar @{$alerts}
-                }
-            }
-        );
-    }
-
-    return $self -> render(status => 200, json => $alerts);
+    return $self -> render_collection($alerts, $pagination, $total);
 }
 
 sub show ($self) {

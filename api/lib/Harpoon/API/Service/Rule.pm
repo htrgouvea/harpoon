@@ -17,6 +17,10 @@ sub get_by_id ($self, $id) {
     return $self -> repository -> find_by_id($id);
 }
 
+sub get_count ($self) {
+    return $self -> repository -> count_all();
+}
+
 sub create ($self, $data) {
     return $self -> repository -> create($data);
 }

@@ -21,7 +21,7 @@
 
 ⚠️ __Warning:__ Harpoon is currently in __development__, you've been warned :) and please consider [contributing!](/.github/CONTRIBUTING.md)
 
-This project is summarized in several crawlers that constitute a single ecosystem, that monitor certain channels such as: Github, Bing, Pastebin and iHaveBeenPwned? in order to perform data leak detection, exposed sensitive files and data exfiltration attempts.
+This project is summarized in several crawlers that constitute a single ecosystem, that monitor public or otherwise authorized channels such as code hosting, search engines and paste sites in order to perform leak detection, exposed sensitive file discovery and data exfiltration monitoring.
 
 ---
 
@@ -31,6 +31,17 @@ This project is summarized in several crawlers that constitute a single ecosyste
 
 
 - You can [click here](/rest-server/database/README.md) to see a diagram of the database and also a catalog on them.
+
+### Current implementation focus
+
+- REST API for alerts, companies, history and rules
+- Bing crawler for public search discovery
+- Pastebin crawler for public paste monitoring
+- Shared crawler detection modules for matching and persistence
+
+### Roadmap constraints
+
+Future integrations should stay within authorized monitoring boundaries. Safe next steps include API hardening, notification workers, dashboards, and documented integrations with approved data sources. This repository should not rely on breached credential datasets, hidden services, or scraping private groups or accounts.
 
 ---
 
