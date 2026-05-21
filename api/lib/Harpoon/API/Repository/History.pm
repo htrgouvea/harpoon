@@ -48,6 +48,18 @@ sub create ($self, $data) {
         $source = undef;
     }
 
+    if (defined $data->{datetime} && $data->{datetime} ne q{}) {
+        my $results = $db -> query(
+            'INSERT INTO public.history (id_company, source, datetime, status) VALUES (?, ?, ?, ?) RETURNING *',
+            $data->{id_company},
+            $source,
+            $data->{datetime},
+            $data->{status}
+        );
+
+        return $results -> hash;
+    }
+
     my $results = $db -> query(
         'INSERT INTO public.history (id_company, source, status) VALUES (?, ?, ?) RETURNING *',
         $data->{id_company},
@@ -66,7 +78,7 @@ sub update ($self, $id, $data) {
         $source = undef;
     }
 
-    if ($data->{datetime}) {
+    if (defined $data->{datetime} && $data->{datetime} ne q{}) {
         my $results = $db -> query(
             'UPDATE public.history SET id_company = ?, source = ?, datetime = ?, status = ? WHERE id = ? RETURNING *',
             $data->{id_company},

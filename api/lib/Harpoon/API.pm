@@ -60,7 +60,15 @@ Harpoon::API::Util::Environment::load('.env');
         'alert#list',
         service => $alert_service
     );
+    $router -> get('/alert') -> to(
+        'alert#list',
+        service => $alert_service
+    );
     $router -> get('/alerts/:id') -> to(
+        'alert#show',
+        service => $alert_service
+    );
+    $router -> get('/alert/:id') -> to(
         'alert#show',
         service => $alert_service
     );
@@ -68,11 +76,23 @@ Harpoon::API::Util::Environment::load('.env');
         'alert#create',
         service => $alert_service
     );
+    $router -> post('/alert') -> to(
+        'alert#create',
+        service => $alert_service
+    );
     $router -> put('/alerts/:id') -> to(
         'alert#update',
         service => $alert_service
     );
+    $router -> put('/alert/:id') -> to(
+        'alert#update',
+        service => $alert_service
+    );
     $router -> delete('/alerts/:id') -> to(
+        'alert#remove',
+        service => $alert_service
+    );
+    $router -> delete('/alert/:id') -> to(
         'alert#remove',
         service => $alert_service
     );

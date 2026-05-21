@@ -42,6 +42,21 @@ sub count_all ($self) {
 
 sub create ($self, $data) {
     my $db = $self -> pg -> db;
+
+    if ($data->{datetime}) {
+        my $results = $db -> query(
+            'INSERT INTO public.alert (id_company, datetime, status, notification, content, hash) VALUES (?, ?, ?, ?, ?, ?) RETURNING *',
+            $data->{id_company},
+            $data->{datetime},
+            $data->{status},
+            $data->{notification},
+            $data->{content},
+            $data->{hash}
+        );
+
+        return $results -> hash;
+    }
+
     my $results = $db -> query(
         'INSERT INTO public.alert (id_company, status, notification, content, hash) VALUES (?, ?, ?, ?, ?) RETURNING *',
         $data->{id_company},
@@ -57,7 +72,7 @@ sub create ($self, $data) {
 sub update ($self, $id, $data) {
     my $db = $self -> pg -> db;
 
-    if ($data->{datetime}) {
+    if (defined $data->{datetime} && $data->{datetime} ne q{}) {
         my $results = $db -> query(
             'UPDATE public.alert SET id_company = ?, datetime = ?, status = ?, notification = ?, content = ?, hash = ? WHERE id = ? RETURNING *',
             $data->{id_company},

@@ -71,6 +71,7 @@ sub create ($self) {
             {
                 id_company => $payload->{id_company},
                 source => $payload->{source},
+                datetime => $payload->{datetime},
                 status => $payload->{status}
             }
         );

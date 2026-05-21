@@ -78,6 +78,7 @@ sub create ($self) {
         $alert = $service -> create(
             {
                 id_company => $payload->{id_company},
+                datetime => $payload->{datetime},
                 status => $payload->{status},
                 notification => $payload->{notification},
                 content => $payload->{content},
