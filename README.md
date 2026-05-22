@@ -5,7 +5,7 @@
     <a href="/LICENSE.md">
       <img src="https://img.shields.io/badge/license-MIT-blue.svg">
     </a>
-    <a href="https://github.com/GouveaHeitor/uranus/releases">
+    <a href="https://github.com/htrgouvea/harpoon/releases">
       <img src="https://img.shields.io/badge/version-0.1.6-blue.svg">
     </a>
     <br/>
@@ -30,7 +30,7 @@ This project is summarized in several crawlers that constitute a single ecosyste
 ![Image](/files/Diagram.png)
 
 
-- You can [click here](/rest-server/database/README.md) to see a diagram of the database and also a catalog on them.
+- You can inspect the database schema in [api/database/database.sql](/Users/htrgouvea/Documents/harpoon/api/database/database.sql).
 
 ### Current implementation focus
 
@@ -49,30 +49,30 @@ Future integrations should stay within authorized monitoring boundaries. Safe ne
 
 ```bash
   # Download
-  $ git clone https://github.com/GouveaHeitor/uranus && cd uranus
+  $ git clone https://github.com/htrgouvea/harpoon && cd harpoon
 
-  # Building and starting MariaDB Database
-  $ docker build -t uranus-database ./rest-server/database/
-  $ docker run -d -p 3306:3306 --name database -e MARIADB_ROOT_PASSWORD=mypassword uranus-database
+  # Start the REST API stack from the current api/ directory
+  $ cd api
+  $ cat > .env <<'EOF'
+  APPLICATION_PORT=5000
+  DATABASE_HOST=db
+  DATABASE_PORT=5432
+  DATABASE_NAME=harpoon
+  DATABASE_USER=harpoon
+  DATABASE_PASSWORD=harpoon
+  EOF
 
-  # Building and starting the REST API
-  $ docker build -t uranus-rest-server ./rest-server.
-  $ docker run -d -p 80:80 --name rest-server uranus-rest-server
+  # Build and start Postgres + API
+  $ docker compose up --build -d
 
-  # Building all crawlers/workers containers
-  $ docker build -t bing-crawler ./crawlers/bing/
-  $ docker build -t email-notify ./workers/email-notify
-
-  # Running all crawlers/workers containers
-  $ docker run -d --name bing bing-crawler
-  $ docker run -d --name email-notify email-notify
+  # API will be available on http://localhost:5000
 ```
 
 ---
 
 ### Contribution
 
-Your contributions and suggestions are heartily ♥ welcome. [See here the contribution guidelines.](/.github/CONTRIBUTING.md) Please, report bugs via [issues page](https://github.com/GouveaHeitor/uranus/issues) and for security issues, see here the [security policy.](/SECURITY.md) (✿ ◕‿◕)
+Your contributions and suggestions are heartily ♥ welcome. [See here the contribution guidelines.](/.github/CONTRIBUTING.md) Please, report bugs via [issues page](https://github.com/htrgouvea/harpoon/issues) and for security issues, see here the [security policy.](/SECURITY.md) (✿ ◕‿◕)
 
 ---
 
