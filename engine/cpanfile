@@ -1,1 +1,1 @@
-requires "";
+requires 'Find::Lib', '1.04';
